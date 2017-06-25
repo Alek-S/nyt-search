@@ -2,7 +2,6 @@
 
 //==MODULES==
 const express = require('express');
-const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
