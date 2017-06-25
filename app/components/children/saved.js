@@ -8,6 +8,6 @@ class Saved extends React.Component{
 			</section>
 		);
 	}
-}
+} //end of class
 
 export default Saved;
