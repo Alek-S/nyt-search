@@ -1,9 +1,9 @@
-// Include the Main React Dependencies
+//==Dependencies==
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-// Include the main Main Component
+//Main Component
 import Main from './components/main.js';
 
 ReactDOM.render(
