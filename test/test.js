@@ -13,6 +13,18 @@ describe( chalk.yellow('HTML Routes:'), function () {
 			.get('/')
 			.expect(200, done);
 	});
+
+	it('responds to GET /assets/css/style.css with 200', function(done) {
+		request(server)
+			.get('/assets/css/style.css')
+			.expect(200, done);
+	});
+
+	it('responds to GET /bundle.js with 200', function(done) {
+		request(server)
+			.get('/bundle.js')
+			.expect(200, done);
+	});
 });
 
 

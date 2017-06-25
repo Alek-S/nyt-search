@@ -3,7 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
+// Include the main Main Component
+import Main from './components/main.js';
+
 ReactDOM.render(
-	<h1>Hello World</h1>,
+	<Main />,
 	document.getElementById('app')
 );
