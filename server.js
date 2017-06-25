@@ -12,7 +12,14 @@ const helmet = require('helmet');
 const app = express();
 app.set('port', (process.env.PORT || 5000));
 
+
+//===HTTP Headers===
 app.use(helmet());
+
+
+//===Morgan Logger Middleware===
+app.use(morgan(':method :url :status - :response-time ms'));
+
 
 //===Parsing===
 app.use(bodyParser.json());
