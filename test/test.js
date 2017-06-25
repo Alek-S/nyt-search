@@ -18,9 +18,9 @@ describe( chalk.yellow('HTML Routes:'), function () {
 
 
 //===API Routes===
-describe(chalk.yellow('API Routes:'), function () {
-	afterEach(function () {
-		server.close();
-	});
+// describe(chalk.yellow('API Routes:'), function () {
+// 	afterEach(function () {
+// 		server.close();
+// 	});
 
-});
+// });
