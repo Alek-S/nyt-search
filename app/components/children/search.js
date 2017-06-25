@@ -3,7 +3,9 @@ import React from 'react';
 class Search extends React.Component{
 	render(){
 		return(
-			<h1>search</h1>
+			<section id='search'>
+				<h3>Search</h3>
+			</section>
 		);
 	}
 }

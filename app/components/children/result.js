@@ -3,7 +3,9 @@ import React from 'react';
 class Result extends React.Component{
 	render(){
 		return(
-			<h1>result</h1>
+			<section id='result'>
+				<h3>Results</h3>
+			</section>
 		);
 	}
 }

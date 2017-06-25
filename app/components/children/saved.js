@@ -3,7 +3,9 @@ import React from 'react';
 class Saved extends React.Component{
 	render(){
 		return(
-			<h1>saved</h1>
+			<section id='saved'>
+				<h3>Saved</h3>
+			</section>
 		);
 	}
 }
