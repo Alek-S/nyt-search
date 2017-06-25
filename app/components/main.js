@@ -1,7 +1,5 @@
 import React from 'react';
 import Search from './children/search.js';
-import Result from './children/result.js';
-import Saved from './children/saved.js';
 
 class Main extends React.Component{
 	render(){
@@ -13,8 +11,6 @@ class Main extends React.Component{
 				</header>
 
 				<Search />
-				<Result />
-				<Saved />
 			</div>
 		);
 	}
