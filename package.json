@@ -1,6 +1,9 @@
 {
   "name": "nytreact",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.1.1"
+  },
   "description": "Search NYT articles and save to read later",
   "main": "server.js",
   "scripts": {
