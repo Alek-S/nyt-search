@@ -12,22 +12,40 @@ class Search extends React.Component{
 			topic: '',
 			start: undefined,
 			end: undefined,
+			results: undefined
 		};
 	}
 
-
+	//Custom handler for when submit button is pressed
 	_handleSubmit(event){
 		event.preventDefault();
 
+		//save form entries to states
 		this.setState({
-			topic: event.target.topic.value,
-			start: event.target.startDate.value,
-			end: event.target.endDate.value
+			topic: event.target.topic.value.trim(),
+			start: parseInt(event.target.startDate.value),
+			end: parseInt(event.target.endDate.value.trim())
 		}, ()=>{
-			console.log('state',this.state);
+
+			if(this.state.topic.length > 0){
+				const apiKey = 'f4c5492098e245379b36710a637e455a';
+				const query = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' +
+									apiKey + '&q='+ this.state.topic;
+				console.log(query);
+
+				//query nyt for articles
+				axios({
+					method: 'get',
+					url: query,
+
+				}).then( (reply)=> {
+					//save NYT response to this.state.result --  "reply.data.response.docs"
+					this.setState({
+						results: reply.data.response.docs
+					});
+				});
+			}
 		});
-		
-		console.log(event.target.startDate.value);
 	}
 
 
@@ -44,6 +62,7 @@ class Search extends React.Component{
 							<input 
 								type="text" 
 								name="topic" 
+								required
 							/><br />
 						</label>
 
@@ -51,8 +70,9 @@ class Search extends React.Component{
 							<p>Start Year:</p><br />
 							<input 
 								className='dateForm' 
-								type="date" 
+								type="number" min="1851" max={new Date().getFullYear()} step="1" placeholder="2016"
 								name="startDate" 
+								required
 							/><br />
 						</label>
 
@@ -60,8 +80,9 @@ class Search extends React.Component{
 							<p>End Year:</p><br />
 							<input 
 								className='dateForm' 
-								type="date" 
+								type="number" min="1851" max={new Date().getFullYear()} step="1" placeholder="2017"
 								name="endDate" 
+								required
 							/><br />
 						</label>
 
@@ -70,7 +91,7 @@ class Search extends React.Component{
 
 				</section>
 
-				<Result searched={this.state.topic} />
+				<Result searched={this.state.results} />
 				<Saved />
 			</div>
 		);

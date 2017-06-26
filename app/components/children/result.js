@@ -9,7 +9,7 @@ class Result extends React.Component{
 		return(
 			<section id='result'>
 				<h3>Results</h3>
-				<p> {this.props.searched} </p>
+				<p> {console.log(this.props.searched)} </p>
 			</section>
 		);
 	}
