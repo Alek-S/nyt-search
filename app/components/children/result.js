@@ -1,15 +1,20 @@
 import React from 'react';
 
 class Result extends React.Component{
-	constructor(props){
-		super(props);
+	constructor(){
+		super();
 	}
 
 	render(){
+		let articles = this.props.searched;
+		if(articles){
+			console.log(articles[0].headline.main);
+		}
+		
 		return(
 			<section id='result'>
 				<h3>Results</h3>
-				<p> {console.log(this.props.searched)} </p>
+				<p></p>
 			</section>
 		);
 	}
