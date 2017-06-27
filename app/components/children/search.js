@@ -1,6 +1,5 @@
 import React from 'react';
 import Result from './result.js';
-import Saved from './saved.js';
 import axios from 'axios';
 
 class Search extends React.Component{
@@ -92,7 +91,6 @@ class Search extends React.Component{
 				</section>
 
 				<Result searched={this.state.results} />
-				<Saved />
 			</div>
 		);
 	}
