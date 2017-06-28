@@ -28,8 +28,11 @@ class Search extends React.Component{
 
 			if(this.state.topic.length > 0){
 				const apiKey = 'f4c5492098e245379b36710a637e455a';
-				const query = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' +
-									apiKey + '&q='+ this.state.topic + '&fl=web_url,headline,pub_date';
+				const query = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' 
+									+apiKey + '&q='+ this.state.topic 
+									+'&begin_date=' + this.state.start + '0101'						 
+									+'&end_date=' + this.state.end + '0101'						 
+									+'&fl=web_url,headline,pub_date';
 				console.log(query);
 
 				//query nyt for articles

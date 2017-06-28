@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600');
 
 html{
 	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 400;
 }
+strong{
+	font-weight: 600;
+}
+
 
 /*top header bar*/
 header{
@@ -86,4 +91,15 @@ input:focus{
 }
 .btn:active{
 	background: linear-gradient(to bottom, #e63333 0%, #ae3d3d 100%);
+}
+
+
+#result p{
+	background-color: #f2f2f2;
+	padding: 5px;
+	margin: 5px;	
+}
+#result .btn{
+	font-size: .8em;
+	float: right;
 }
