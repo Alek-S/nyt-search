@@ -1,15 +1,18 @@
-'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
 // Create schema
 let ArticleSchema = new Schema({
-	headline: {
+	title: {
 		type: String,
 		required: true
 	},
-	link: {
+	date: {
+		type: String,
+		required: true
+	},
+	url: {
 		type: String,
 		required: true
 	},
