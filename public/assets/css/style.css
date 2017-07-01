@@ -94,12 +94,12 @@ input:focus{
 }
 
 
-#result p{
+#result p, #saved p{
 	background-color: #f2f2f2;
 	padding: 5px;
 	margin: 5px;	
 }
-#result .btn{
+#result .btn, #saved .btn{
 	font-size: .8em;
 	float: right;
 }
