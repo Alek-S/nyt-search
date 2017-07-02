@@ -17,16 +17,20 @@ class Saved extends React.Component{
 		this._getarticles();
 	}
 
-	componentDidMount(){
-		//polling
-		this._timer = setInterval( ()=>{
-			this._getarticles();
-		}, 3500 );
+	// componentDidMount(){
+	// 	//polling
+	// 	this._timer = setInterval( ()=>{
+	// 		this._getarticles();
+	// 	}, 7000 );
+	// }
+
+	// componentWillUnmount(){
+	// 	clearInterval( this._timer);
+	// }
+	componentWillReceiveProps(){
+		this._getarticles();
 	}
 
-	componentWillUnmount(){
-		clearInterval( this._timer);
-	}
 
 	_getarticles(){
 		axios.get( window.location.origin + '/api/saved').then((response)=>{
