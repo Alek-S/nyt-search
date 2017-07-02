@@ -30,9 +30,27 @@ describe( chalk.yellow('HTML Routes:'), function () {
 
 
 //===API Routes===
-// describe(chalk.yellow('API Routes:'), function () {
-// 	afterEach(function () {
-// 		server.close();
-// 	});
+describe(chalk.yellow('API Routes:'), function () {
+	afterEach(function () {
+		server.close();
+	});
 
-// });
+	it('responds to GET api/saved with 200', function(done) {
+		request(server)
+			.get('/api/saved')
+			.expect(200, done);
+	});
+
+	it('responds to POST api/saved with 200', function(done) {
+		request(server)
+			.post('/api/saved')
+			.expect(200, done);
+	});
+
+	it('responds to DELETE api/saved with 200', function(done) {
+		request(server)
+			.del('/api/saved')
+			.expect(200, done);
+	});	
+
+});
