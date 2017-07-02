@@ -21,8 +21,19 @@ header{
 header h1{
 	font-size: 2em;
 }
+header h1 img{
+	position: relative;
+	top: 8px;
+}
 header h2{
 	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+header a{
+	padding-top: 5px;
+	text-decoration: none;
+	color: #000;
+	font-size: .8em;
 }
 
 section{
