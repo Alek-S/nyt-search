@@ -7,18 +7,19 @@
 
 #### Try It Now: [Live Page Link](https://nyt-alek.herokuapp.com/)
 
- Search for and annotate articles of interest.
+ Search for and annotate New York times articles of interest.
 
 ![example](./screenshots/comment.gif)
 
  ## Technology Used
- Node.js, Express, React, Mongoose / MongoDB, Axios
+ Node.js, Express, React, Mongoose / MongoDB, Webpack, Babel, Axios
 
 ### Middleware Stack
-Morgan, Helmet
+Morgan (logging), Helmet (Secure HTTP Headers)
 
 ### Testing and Deployment
 Travis CI, Mocha, Supertest, Snyk, Gemnasium, Heroku
 
-![Test](./screenshots/test.png)
+<img src="./screenshots/test.png" width="500">
+
 
