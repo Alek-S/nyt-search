@@ -21,7 +21,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 1000 );
+		}, 3000 );
 	}
 
 	componentWillUnmount(){
@@ -75,8 +75,9 @@ class Saved extends React.Component{
 	}
 
 	_addComment(event){
-		event.preventDefault();
-
+		// event.stopPropagation();
+  		event.nativeEvent.stopImmediatePropagation();
+		
 		axios({
 			method: 'post',
 			url:  window.location.origin + '/api/comment',
