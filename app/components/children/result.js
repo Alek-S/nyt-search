@@ -12,10 +12,10 @@ class Result extends React.Component{
 		console.log(articles[0].headline.web_url);
 		return articles.map( (article)=>{ 
 			return( 
-				<p>{article.headline.main} --  
-					<strong> Published: </strong>{article.pub_date.slice(0,10)} -- 
-					<a href={article.web_url}>Link</a> 
-					<button className='btn' onClick={ this._saveArticle.bind(article) }>Save Article</button>
+				<p><strong> Headline: </strong>{article.headline.main}
+					<button className='btn' onClick={ this._saveArticle.bind(article) }>Save Article</button>  
+					<br /><strong> Published: </strong>{article.pub_date.slice(0,10)} 
+					<br /><a href={article.web_url}>Article Link</a> 
 				</p>
 			); 
 		});

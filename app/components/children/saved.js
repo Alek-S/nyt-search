@@ -69,10 +69,11 @@ class Saved extends React.Component{
 		return this.state.savedArticles.map( (article)=>{
 
 			return(
-				<div className='resultSection'>{article.title} -- 
-					<strong> Published: </strong>{article.date} -- 
-					<a href={article.url}>Link</a>
+				<div className='resultSection'><strong>Headline: </strong>{article.title}
 					<button className='btn' onClick={ this._deleteArticle.bind(article) }>Delete Article</button>
+					<br /><strong> Published: </strong>{article.date.slice(0,10)}
+					<br /><a href={article.url}>Article Link</a>
+
 					<div className='commentsSection'>{this._getComments(article)}</div>
 					<form onSubmit={ this._addComment.bind(this) }>
 						<input 

@@ -43,7 +43,7 @@ section{
 	border-radius: 5px;
 	margin-top: 50px;
 	margin-bottom: 50px;
-	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.09);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.25);
 }
 section h3{
 	text-align: center;
@@ -90,6 +90,7 @@ input:focus{
 }
 
 .btn{
+	outline: none;
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 1.05em;
 	color: #fff;
@@ -132,12 +133,12 @@ input:focus{
 	margin-bottom: 5px;
 }
 .addComment{
+	outline: none;
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: .9em;
 	border-radius: 5px;
 	border: none;
 	color: #000;
-	/*float: left;*/
 	width: 120px;
 	height: 25px;
 	margin-top: 0px;
@@ -145,7 +146,7 @@ input:focus{
 	background: linear-gradient(to bottom, #e6e6e6 0%, #dbdbdb 47%, #d6d6d6 100%);
 }
 .addComment:hover{
-	background: linear-gradient(to bottom, #f7f7f7 0%, #ededed 47%, #e6e6e6 100%);
+	background: linear-gradient(to bottom, #f5f5f5 0%, #ebebeb 47%, #e3e3e3 100%);
 }
 .addComment:active{
 	background: linear-gradient(to bottom, #cccccc 0%, #c4c4c4 47%, #bdbdbd 100%);
