@@ -1,4 +1,4 @@
-'use strict';
+
 
 //==MODULES==
 const express = require('express');

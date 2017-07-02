@@ -20,7 +20,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 5000 );
+		}, 1000 );
 	}
 
 	componentWillUnmount(){
