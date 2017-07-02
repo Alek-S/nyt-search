@@ -7,7 +7,8 @@ class Saved extends React.Component{
 		super();
 
 		this.state={
-			savedArticles: []
+			savedArticles: [],
+			value: ''
 		};
 	}
 
@@ -35,7 +36,7 @@ class Saved extends React.Component{
 		});
 	}
 
-	_deleteArticle(){
+	_deleteArticle(event){
 		event.preventDefault();
 
 		//delete selected article of mongo
@@ -60,8 +61,15 @@ class Saved extends React.Component{
 		});
 	}
 
-	_addComment(){
+	_handleChange(event){
+		event.preventDefault();
+		this.value = event.target.value;
+	}
 
+	_addComment(event){
+		event.preventDefault();
+		console.log(this.value);
+		console.log(this.url);
 	}
 	
 	_showSaved(){
@@ -75,10 +83,11 @@ class Saved extends React.Component{
 					<br /><a href={article.url}>Article Link</a>
 
 					<div className='commentsSection'>{this._getComments(article)}</div>
-					<form onSubmit={ this._addComment.bind(this) }>
+					<form onSubmit={ this._addComment.bind(article) }>
 						<input 
 							className='commentForm' 
-							type="test" placeholder="Add new comment" 
+							type="test" placeholder="Add new comment"
+							value={article.value} onChange={this._handleChange.bind(article)}
 							required
 						/><br />
 						<button className='addComment' >Add Comment</button>
