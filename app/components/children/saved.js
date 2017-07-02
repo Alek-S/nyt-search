@@ -7,13 +7,13 @@ class Saved extends React.Component{
 		super();
 
 		this.state={
-			savedArticles: []
+			savedArticles: [],
+			currentArticle: undefined
 		};
 	}
 
-	//before redner
+	//before render
 	componentWillMount(){
-		console.log('here');
 		this._getarticles();
 	}
 
@@ -21,7 +21,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 2000 );
+		}, 1000 );
 	}
 
 	componentWillUnmount(){
@@ -37,14 +37,24 @@ class Saved extends React.Component{
 	}
 
 	_deleteArticle(){
+		event.preventDefault();
 
+		//delete selected article of mongo
+		axios({
+			method: 'delete',
+			url:  window.location.origin + '/api/saved',
+			data: {
+				url: this.url
+			}
+		}).then( (response)=>{
+			console.log(response.data);
+		});
 	}
 
 	_showSaved(){
-		console.log('here2');
 
 		return this.state.savedArticles.map( (article)=>{
-			console.log(article);
+
 			return(
 				<p>{article.title} -- 
 					<strong> Published: </strong>{article.date} -- 
