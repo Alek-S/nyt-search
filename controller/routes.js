@@ -80,4 +80,32 @@ module.exports = function(app) {
 		}
 	});//end of delete
 
+	//add comment to article
+	app.post('/api/comment', (req,res)=>{
+		let comment =  req.body.comment;
+		let url = req.body.url;
+
+		if(!comment || !url){
+			res.json({result: 'missing required body fields'});
+		}else{
+
+			Article.update(
+				{'url': url},
+				{ '$push':	{'comments': comment} }, (err)=>{
+					if(err){
+						console.log(err);
+					}else{
+						res.json({result: 'success'});
+					}
+				}
+			);
+
+		}
+	});
+
+	//delete comment from article
+	app.delete('/api/comment', (req,res)=>{
+		
+	});
+
 };

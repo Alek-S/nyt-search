@@ -25,6 +25,12 @@ describe( chalk.yellow('HTML Routes:'), function () {
 			.get('/bundle.js')
 			.expect(200, done);
 	});
+
+	it('responds to GET /assets/images/logo.svg with 200', function(done) {
+		request(server)
+			.get('/assets/images/logo.svg')
+			.expect(200, done);
+	});
 });
 
 
@@ -52,5 +58,17 @@ describe(chalk.yellow('API Routes:'), function () {
 			.del('/api/saved')
 			.expect(200, done);
 	});	
+
+	it('responds to POST api/comment with 200', function(done) {
+		request(server)
+			.post('/api/comment')
+			.expect(200, done);
+	});	
+
+	it('responds to DELETE api/comment with 200', function(done) {
+		request(server)
+			.del('/api/comment')
+			.expect(200, done);
+	});
 
 });

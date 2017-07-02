@@ -51,25 +51,50 @@ class Saved extends React.Component{
 		});
 	}
 
-	_getComments(article){
-		return article.comments.map((comment)=>{
-			return(
-				<p className='comment'>
-					{comment}
-				</p>
-			);
-		});
-	}
-
 	_handleChange(event){
 		event.preventDefault();
 		this.value = event.target.value;
 	}
 
+
+	_getComments(article){
+
+		//url of story, and index of comment array - used to bind to _deleteComment
+		let toDelete = (url, commentIndex)=>{
+			return {url, commentIndex};
+		};
+
+		return article.comments.map((comment, index)=>{
+			return(
+				<p className='comment' value={index}>
+					{comment}
+					<button className='btn' onClick={ this._deleteComment.bind(toDelete(article.url, index)) }>Delete Comment</button>
+				</p>
+			);
+		});
+	}
+
 	_addComment(event){
 		event.preventDefault();
-		console.log(this.value);
-		console.log(this.url);
+
+		axios({
+			method: 'post',
+			url:  window.location.origin + '/api/comment',
+			data: {
+				url: this.url,
+				comment: this.value
+			}
+		}).then( (response)=>{
+			console.log(response.data);
+		});
+	}
+
+	_deleteComment(event){
+		event.preventDefault();
+		//article url: this.url
+		//comment index: this.commentIndex
+
+		
 	}
 	
 	_showSaved(){
@@ -83,6 +108,8 @@ class Saved extends React.Component{
 					<br /><a href={article.url}>Article Link</a>
 
 					<div className='commentsSection'>{this._getComments(article)}</div>
+
+
 					<form onSubmit={ this._addComment.bind(article) }>
 						<input 
 							className='commentForm' 
@@ -92,6 +119,8 @@ class Saved extends React.Component{
 						/><br />
 						<button className='addComment' >Add Comment</button>
 					</form>
+
+
 				</div> 
 			);
 		});
