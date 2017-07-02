@@ -21,7 +21,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 3000 );
+		}, 3500 );
 	}
 
 	componentWillUnmount(){
@@ -44,10 +44,11 @@ class Saved extends React.Component{
 			method: 'delete',
 			url:  window.location.origin + '/api/saved',
 			data: {
-				url: this.url
+				url: this.article.url
 			}
 		}).then( (response)=>{
 			console.log(response.data);
+			this.callback();
 		});
 	}
 
@@ -58,17 +59,19 @@ class Saved extends React.Component{
 
 
 	_getComments(article){
-
 		//url of story, and index of comment array - used to bind to _deleteComment
 		let toDelete = (url, commentIndex)=>{
-			return {url, commentIndex};
+			return {
+				url:url, 
+				commentIndex: commentIndex, 
+				getArticles: this._getarticles.bind(this)};
 		};
 
 		return article.comments.map((comment, index)=>{
 			return(
 				<p className='comment' value={index}>
 					{comment}
-					<button className='btn' onClick={ this._deleteComment.bind(toDelete(article.url, index)) }>x</button>
+					<button className='btn' onClick={ this._deleteComment.bind( toDelete(article.url, index)) }>x</button>
 				</p>
 			);
 		});
@@ -76,17 +79,18 @@ class Saved extends React.Component{
 
 	_addComment(event){
 		// event.stopPropagation();
-  		event.nativeEvent.stopImmediatePropagation();
+		event.nativeEvent.stopImmediatePropagation();
 		
 		axios({
 			method: 'post',
 			url:  window.location.origin + '/api/comment',
 			data: {
-				url: this.url,
-				comment: this.value
+				url: this.article.url,
+				comment: this.article.value
 			}
 		}).then( (response)=>{
 			console.log(response.data);
+			this.callback();
 		});
 	}
 
@@ -104,23 +108,28 @@ class Saved extends React.Component{
 			}
 		}).then( (response)=>{
 			console.log(response.data);
+			this.getArticles();
 		});
 
 	}
 	
 	_showSaved(){
 
+		let toBind = (article, callback)=>{
+			return {article, callback};
+		};
+
 		return this.state.savedArticles.map( (article)=>{
 
 			return(
 				<div className='resultSection'><strong>Headline: </strong>{article.title}
-					<button className='btn' onClick={ this._deleteArticle.bind(article) }>x</button>
+					<button className='btn' onClick={ this._deleteArticle.bind( toBind(article, this._getarticles.bind(this) ) ) }>x</button>
 					<br /><strong> Published: </strong>{article.date.slice(0,10)}
 					<br /><a href={article.url}>Article Link</a>
 
 					<div className='commentsSection'>{this._getComments(article)}</div>
 
-					<form onSubmit={ this._addComment.bind(article) }>
+					<form onSubmit={ this._addComment.bind( toBind(article, this._getarticles) ) }>
 						<input 
 							className='commentForm' 
 							type="test" placeholder="Add new comment"
