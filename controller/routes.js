@@ -105,7 +105,42 @@ module.exports = function(app) {
 
 	//delete comment from article
 	app.delete('/api/comment', (req,res)=>{
-		
-	});
+		let url = req.body.url;
+		let position = req.body.position;
+		let commentPos = {};
+
+		position = 'comments.' + position;
+		commentPos[position] = '1';
+
+		if(!position || !url){
+			res.json({result: 'missing required body fields'});
+		}else{
+
+			//set the specific comment to be deleted to null in the comments array
+			Article.update(
+				{'url': url},
+				{$unset: commentPos}, (err)=>{
+					if(err){
+						console.log(err);
+					}else{
+
+						//clear out null entries from comments
+						Article.update(
+							{'url': url}, 
+							{$pull : {'comments' : null}}, (err)=>{
+								if(err){
+									console.log(err);
+								}else{
+									res.json({result: 'success'});
+								}
+							}
+						);//end of article update
+
+					}
+				}
+			);//end of article update
+
+		}
+	});//end of app.delete
 
 };

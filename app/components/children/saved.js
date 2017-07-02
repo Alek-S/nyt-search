@@ -21,7 +21,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 5000 );
+		}, 1000 );
 	}
 
 	componentWillUnmount(){
@@ -68,7 +68,7 @@ class Saved extends React.Component{
 			return(
 				<p className='comment' value={index}>
 					{comment}
-					<button className='btn' onClick={ this._deleteComment.bind(toDelete(article.url, index)) }>Delete Comment</button>
+					<button className='btn' onClick={ this._deleteComment.bind(toDelete(article.url, index)) }>x</button>
 				</p>
 			);
 		});
@@ -91,10 +91,20 @@ class Saved extends React.Component{
 
 	_deleteComment(event){
 		event.preventDefault();
+
 		//article url: this.url
 		//comment index: this.commentIndex
+		axios({
+			method: 'delete',
+			url:  window.location.origin + '/api/comment',
+			data: {
+				url: this.url,
+				position: this.commentIndex
+			}
+		}).then( (response)=>{
+			console.log(response.data);
+		});
 
-		
 	}
 	
 	_showSaved(){
@@ -103,12 +113,11 @@ class Saved extends React.Component{
 
 			return(
 				<div className='resultSection'><strong>Headline: </strong>{article.title}
-					<button className='btn' onClick={ this._deleteArticle.bind(article) }>Delete Article</button>
+					<button className='btn' onClick={ this._deleteArticle.bind(article) }>x</button>
 					<br /><strong> Published: </strong>{article.date.slice(0,10)}
 					<br /><a href={article.url}>Article Link</a>
 
 					<div className='commentsSection'>{this._getComments(article)}</div>
-
 
 					<form onSubmit={ this._addComment.bind(article) }>
 						<input 
@@ -119,7 +128,6 @@ class Saved extends React.Component{
 						/><br />
 						<button className='addComment' >Add Comment</button>
 					</form>
-
 
 				</div> 
 			);
