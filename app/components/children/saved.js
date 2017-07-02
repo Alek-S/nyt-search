@@ -7,8 +7,7 @@ class Saved extends React.Component{
 		super();
 
 		this.state={
-			savedArticles: [],
-			currentArticle: undefined
+			savedArticles: []
 		};
 	}
 
@@ -21,7 +20,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 1000 );
+		}, 5000 );
 	}
 
 	componentWillUnmount(){
