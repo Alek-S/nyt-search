@@ -16,6 +16,9 @@ let ArticleSchema = new Schema({
 		type: String,
 		required: true
 	},
+	comments: [{
+		type: String
+	}]
 });
 
 let Article = mongoose.model('Article', ArticleSchema);

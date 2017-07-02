@@ -20,7 +20,7 @@ class Saved extends React.Component{
 		//polling
 		this._timer = setInterval( ()=>{
 			this._getarticles();
-		}, 1000 );
+		}, 5000 );
 	}
 
 	componentWillUnmount(){
@@ -50,16 +50,39 @@ class Saved extends React.Component{
 		});
 	}
 
+	_getComments(article){
+		return article.comments.map((comment)=>{
+			return(
+				<p className='comment'>
+					{comment}
+				</p>
+			);
+		});
+	}
+
+	_addComment(){
+
+	}
+	
 	_showSaved(){
 
 		return this.state.savedArticles.map( (article)=>{
 
 			return(
-				<p>{article.title} -- 
+				<div className='resultSection'>{article.title} -- 
 					<strong> Published: </strong>{article.date} -- 
 					<a href={article.url}>Link</a>
 					<button className='btn' onClick={ this._deleteArticle.bind(article) }>Delete Article</button>
-				</p> 
+					<div className='commentsSection'>{this._getComments(article)}</div>
+					<form onSubmit={ this._addComment.bind(this) }>
+						<input 
+							className='commentForm' 
+							type="test" placeholder="Add new comment" 
+							required
+						/><br />
+						<button className='addComment' >Add Comment</button>
+					</form>
+				</div> 
 			);
 		});
 

@@ -103,14 +103,50 @@ input:focus{
 .btn:active{
 	background: linear-gradient(to bottom, #e63333 0%, #ae3d3d 100%);
 }
+.addComment{
 
+}
 
-#result p, #saved p{
+#result p, #saved p, .resultSection{
 	background-color: #f2f2f2;
 	padding: 5px;
 	margin: 5px;	
 }
+.resultSection{
+	margin-top: 15px;
+}
+#saved p{
+	background-color: #dfdfdf;
+}
+.commentsSection{
+	margin-top: 10px;
+}
+
 #result .btn, #saved .btn{
 	font-size: .8em;
 	float: right;
+}
+
+.commentForm{
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+.addComment{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: .9em;
+	border-radius: 5px;
+	border: none;
+	color: #000;
+	/*float: left;*/
+	width: 120px;
+	height: 25px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	background: linear-gradient(to bottom, #e6e6e6 0%, #dbdbdb 47%, #d6d6d6 100%);
+}
+.addComment:hover{
+	background: linear-gradient(to bottom, #f7f7f7 0%, #ededed 47%, #e6e6e6 100%);
+}
+.addComment:active{
+	background: linear-gradient(to bottom, #cccccc 0%, #c4c4c4 47%, #bdbdbd 100%);
 }
