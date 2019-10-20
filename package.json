@@ -27,7 +27,7 @@
     "chalk": "^2.0.1",
     "express": "^4.15.3",
     "helmet": "^3.6.1",
-    "mongoose": "^4.10.7",
+    "mongoose": "^5.7.5",
     "morgan": "^1.8.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
